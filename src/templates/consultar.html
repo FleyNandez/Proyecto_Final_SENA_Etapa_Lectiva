@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block contenido %}
+
+<head>
+    <style>
+        body { background-color: rgb(4, 131, 148); }
+
+        .enlace1 {
+            display: inline-block;
+            color: beige;
+            text-decoration: none;
+            background-color: rgb(79, 101, 121);
+            padding: 0.5px;
+            margin: 25px 0;
+        }
+
+        .header-container { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+        }
+
+        .header-container h1 { 
+            flex-grow: 1; 
+            text-align: center; 
+            margin: 0; 
+            color: rgb(235, 181, 66); 
+        }
+
+        .enlace6 {
+            display: inline-block;
+            color: beige;
+            text-decoration: none;
+            background-color: rgb(79, 101, 121);
+            padding: 15px;
+            margin: 25px 0;
+        }
+    </style>
+</head>
+
+<body style="background: url('{{ url_for('static', filename='images/consulta.jpeg') }}'); background-size: cover;">
+
+    <a class="enlace1" href="inicio">
+        ⭠ INICIO    
+    </a>
+
+    <h1 style="color:rgb(251, 255, 20)">
+        <p align="center">CONSULTA TU RADICADO</p>
+    </h1>
+
+    <form id="Consultar_solicitud" method="POST" action="/consultar_solicitud">
+        <div class="mb-3">
+            <label for="radicado" class="form-label">
+                <h1 style="color:rgb(251, 255, 20)">
+                    <p align="center">INGRESA EL NUMERO DE TU RADICADO</p>
+                </h1>
+            </label>
+            <p align="center"> <input type="number" name="radicado" class="form-control is-valid" placeholder="Ingrese número radicado" id="radicado" required></p>
+        </div>
+        <div class="col-12">
+            <p align="center"><button class="btn btn-primary" type="submit">Consultar Solicitud</button></p>
+        </div>
+    </form>
+
+</body>
+
+{% endblock contenido %}
+

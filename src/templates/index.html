@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+{% block contenido %}
+ 
+ 
+    <style>
+        .enlace2{ 
+        display: inline-block;
+        color: beige;
+        text-decoration: none;
+        background-color: rgb(153, 40, 6);
+        padding: 15px;
+        margin: 25 px 0 px;
+        }
+        </style> 
+                 
+
+<style>
+    .enlace3{
+    display: inline-block;
+    color: beige;
+    text-decoration: none;
+    background-color: rgb(153, 40, 6);
+    padding: 15px;
+    margin: 25 px 0 px;
+    }
+    </style>
+
+<style>
+    body { background-color: rgb(158, 205, 214); } 
+    .enlace4, .enlace5 
+    { display: inline-block; color: beige; text-decoration: none; padding: 15px; margin: 25px; } 
+    .enlace4 { background-color: rgb(25, 148, 185); } 
+    .enlace5 { background-color: rgb(187, 196, 63); } 
+    .container { display: flex; justify-content: space-between; align-items: center;}
+    </style> 
+
+    
+
+</head>
+
+<body style="background: url('{{ url_for('static', filename='images/fondo_inicio.jpeg') }}'); background-size: cover;">
+
+<body>
+
+    <h1  style= "color:rgb(235, 181, 66)"> 
+        <p align="center">TRABAJAMOS POR USTED </p>
+        
+    </h1>
+
+    <h1 style= "color:rgb(235, 181, 66)" >           
+        <p align="center">SISTEMA DE GESTIÓN DE FALLAS AP </p>
+    </h1>
+
+    <h1 style="color: rgb(25, 148, 185);">
+        <p align="center"> BIENVENIDO MI QUERIDO CIUDADANO PROMEDIO </p>
+        
+    </h1>
+
+    <h1 style="color: rgb(25, 148, 185);">
+        <p align="center"> ¿Que deseas hacer hoy? </p>
+    </h1>
+    
+    
+    <div class="d-grid gap-2 col-6 mx-auto"> <p align="center">
+        <a class="enlace2" href="/generar_reporte" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            GENERAR REPORTE   
+         </a> </p>
+         
+    </div>
+
+    <div class="d-grid gap-2 col-6 mx-auto"> <p align="center">
+        <a class="enlace3" href="/consultar" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            CONSULTAR    
+         </a> </p>
+         <br> 
+         <br> 
+          
+    </div>
+
+    <div 
+    class="container"> 
+    <a class="enlace5" href="/MOD" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> MOD </a> 
+    <a class="enlace4" href="/quienes_somos" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> QUIENES SOMOS </a> 
+</div>
+
+      
+  
+
+</body>
+
+{% endblock contenido %}  
+
+

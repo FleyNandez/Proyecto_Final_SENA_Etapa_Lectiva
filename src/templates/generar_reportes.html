@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+
+{% block contenido %}
+<head>   
+    <style>
+        body {background-color: rgb(4, 131, 148);}
+    </style>
+    <style>
+        .enlace1{
+        display: inline-block;
+        color: beige;
+        text-decoration: none;
+        background-color: rgb(79, 101, 121);
+        padding: 0.5px;
+        margin: 25 px 0 px;
+        }
+        </style> 
+
+</head>
+<body style="background: url('{{ url_for('static', filename='images/registrar.jpeg') }}'); background-size: cover;">
+
+<a class="enlace1" href="inicio" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  ⭠ INICIO    
+</a>
+<body>            
+    <h1 style= "color:rgb(0, 90, 150)" >        
+             <p align="left">INGRESA LOS DATOS DE TU SOLICITUD </p>    
+    </h1>     
+        <h1 style= "color:rgb(10, 10, 10)">
+
+<form id="miFormulario" action="/generar_reporte" method="post">
+    
+    
+   
+    <div class="form-row">
+      <label for="Nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control is-valid" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+  </div>
+  <div class="form-row">
+      <label for="Apellido" class="form-label">Apellido</label>
+      <input type="text" class="form-control is-valid" id="apellido" name="apellido" placeholder="Ingrese su Apellido" required>
+  </div>
+  <div class="form-row">
+      <label for="validationServer04" class="form-label">Documento</label>
+      <select class="form-select is-invalid" id="tipo_documento" name="tipo_documento" required>
+          <option selected disabled value="">Tipo...</option>
+          <option value="CC">Cédula Ciudadanía</option>
+          <option value="CE">Cédula Extranjera</option>
+      </select>
+  </div> 
+  <div class="form-row">
+    <label for="Numero_documento" class="form-label">Número Documento</label>
+    <input type="number" class="form-control is-valid" id="numero_documento" name="numero_documento" placeholder="1234" required min="0">
+</div>
+<div class="form-row">
+      <label for="Dirección" class="form-label">Dirección</label>
+      <input type="text" class="form-control is-valid" id="direccion_falla" name="direccion_falla" placeholder="Dirección" required>
+  </div>
+  <div class="form-row">
+      <label for="validationServer04" class="form-label">Localidad</label>
+      <select class="form-select is-invalid" id="localidad" name="localidad" required>
+          <option selected disabled value="">Localidad...</option>
+                  <option value="localidad_1">1.Usaquén</option>
+                  <option value="localidad_2">2.Chapinero</option>
+                  <option value="localidad_3">3.Santa Fe</option>
+                  <option value="localidad_4">4.San Cristóbal</option>
+                  <option value="localidad_5">5.Usme</option>
+                  <option value="localidad_6">6.Tunjuelito</option>
+                  <option value="localidad_7">7.Bosa</option>
+                  <option value="localidad_8">8.Kennedy</option>
+                  <option value="localidad_9">9.Fontibón</option>
+                  <option value="localidad_10">10.Engativá</option>
+                  <option value="localidad_11">11.Suba</option>
+                  <option value="localidad_12">12.Barrios Unidos</option>
+                  <option value="localidad_13">13.Teusaquillo</option>
+                  <option value="localidad_14">14.Mártires</option>
+                  <option value="localidad_15">15.Antonio Nariño</option>
+                  <option value="localidad_16">16.Puente Aranda</option>
+                  <option value="localidad_17">17.Candelaria</option>
+                  <option value="localidad_18">18.Rafael Uribe Uribe</option>
+                  <option value="localidad_19">19.Ciudad Bolívar</option>
+                  <option value="localidad_20">20.Sumapaz</option>
+                  
+      </select>
+  </div>
+  <div class="form-row">
+      <label for="Correo" class="form-label">Correo</label>
+      <input type="email" class="form-control is-valid" id="email" name="email" placeholder="Opcional">
+  </div>
+  <div class="form-row">
+      <label for="Celular" class="form-label">Celular</label>
+      <input type="tel" class="form-control is-valid" id="celular" name="celular" placeholder="Opcional">
+  </div>
+  <div class="form-row">
+      <label for="validationServer04" class="form-label">Tipo de Falla</label>
+      <select class="form-select is-invalid" id="tipo_falla" name="tipo_falla" required>
+          <option selected disabled value="">Tipo...</option>
+                      <option value="falla_1">luminaria apagada</option>                      
+                      <option value="falla_2">Luminaria hurtada</option>
+                      <option value="falla_3">Sector sin alumbrado</option>
+                      <option value="falla_4">Cables sueltos</option>
+                      <option value="falla_5">Poste en mal estado</option>
+                      <option value="falla_6">Solicitud luminaria nueva</option>
+      </select>
+  </div>
+  <div class="col-12">
+    <h1 style= "color:rgb(189, 45, 9)"> </h1> 
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
+        <label class="form-check-label" for="invalidCheck3">
+          LA INFORMACIÓN INGRESADA ES CORRECTA
+        </label>           
+      </div>  </h1> 
+  </div>
+  <div class="col-12">
+      <button class="btn btn-primary" type="submit">Registrar Solicitud</button>
+  </form>
+</div>
+
+</body>
+
+{% endblock contenido %}
+
+
+
+ 

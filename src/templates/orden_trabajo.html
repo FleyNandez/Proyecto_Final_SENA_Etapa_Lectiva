@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+{% block contenido %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orden Trabajo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .enlace { display: inline-block; color: beige; text-decoration: none; background-color: rgb(79, 101, 121); padding: 0.5px; margin: 10px 0px; }
+        .table-container { margin: 0.5px auto; background-color: rgb(253, 253, 253); padding: 0.5px; border-radius: 3px; box-shadow: 0 0 10px rgb(245, 235, 235); max-width: 150%; }
+        .table { font-size: 0.7em; }
+        th, td { padding: 8px; }
+        body { background-color: rgb(181, 218, 216); }
+    </style>
+</head>
+<body>
+    <div class="top-left">
+        <a class="enlace" href="{{ url_for('inicio') }}" id="navbarDropdown" role="button">
+            ⭠ INICIO    
+        </a>
+        <a class="enlace" href="{{ url_for('contratista') }}">⭠ REGRESAR</a>
+        <a class="enlace" href="{{ url_for('moviles') }}">⭠ MOVILES</a>
+        <a class="enlace" href="{{ url_for('ordenes_finalizadas') }}">⭠ ORDENES CERRADAS</a>
+    </div>
+
+    <div class="table-container">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha Reporte</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Tipo Documento</th>
+                    <th>Número Documento</th>
+                    <th>Dirección Falla</th>
+                    <th>Localidad</th>
+                    <th>Email</th>
+                    <th>Celular</th>
+                    <th>Tipo Falla</th>
+                    <th>Movil Designado</th>
+                    <th>Estado</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario, orden in usuarios_con_ordenes %} 
+                {% if not orden or orden.estado != 'CERRADA' %}
+                <tr>
+                    <td>{{ usuario.id }}</td>
+                    <td>{{ usuario.fecha_reporte }}</td>
+                    <td>{{ usuario.nombre }}</td>
+                    <td>{{ usuario.apellido }}</td>
+                    <td>{{ usuario.tipo_documento.value }}</td>
+                    <td>{{ usuario.numero_documento }}</td>
+                    <td>{{ usuario.direccion_falla }}</td>
+                    <td>{{ usuario.localidad.value }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.celular }}</td>
+                    <td>{{ usuario.tipo_falla.value }}</td>
+                    <td style="text-align: center;">
+                        {% if orden and orden.movil %}
+                            <span id="estado-{{ usuario.id }}" style="color: green; font-weight: bold;">
+                                Asignado: {{ orden.movil.value }}
+                            </span>
+                        {% else %}
+                            <span id="estado-{{ usuario.id }}" </span>
+                            <form class="asignar-form" data-id="{{ usuario.id }}">
+                                <select class="movil-select" name="movil" required>
+                                    <option value="">Selecciona</option>
+                                    <option value="movil_1">Liviano</option>
+                                    <option value="movil_2">Canasta</option>
+                                    <option value="movil_3">Subterráneo</option>
+                                </select>
+                                <button type="submit">Asignar</button>
+                            </form>
+                        {% endif %}
+                    </td>         
+
+                    <td style="text-align: center;">
+                        {% if orden and orden.estado.name == 'CERRADA' %}
+                            <span style="color: green; font-weight: bold;">CERRADA</span>
+                        {% elif orden and orden.estado.name == 'ASIGNADO' %}
+                            <span style="color: yellow; font-weight: bold;">ASIGNADA</span>
+                        {% elif orden and orden.estado.name == 'PENDIENTE' %}
+                            <span style="color: red; font-weight: bold;">PENDIENTE</span>
+                        {% endif %}
+                    </td>
+                                  
+                </tr>  
+                {% endif %}
+                {% endfor %}    
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll(".asignar-form").forEach(form => {
+                form.addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    let usuarioId = this.getAttribute("data-id");
+                    let movilSeleccionado = this.querySelector(".movil-select").value;
+                    if (!movilSeleccionado) { alert("Debes seleccionar un móvil."); return; }
+                    fetch("/moviles_ordenes", {
+                        method: "POST", headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ usuario_id: usuarioId, movil: movilSeleccionado })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            let estadoElemento = document.getElementById("estado-" + usuarioId);
+                            estadoElemento.textContent = "Asignado: " + movilSeleccionado;
+                            estadoElemento.style.color = "green";
+                            let select = form.querySelector(".movil-select");
+                            let boton = form.querySelector("button");
+                            select.disabled = true; boton.disabled = true; boton.textContent = "Asignado"; 
+                        } else { alert("Error al asignar el móvil. Intenta de nuevo."); }
+                    })
+                    .catch(error => console.error("Error:", error));
+                });
+            });
+        });
+    </script>
+</body>
+{% endblock contenido %}
+
+

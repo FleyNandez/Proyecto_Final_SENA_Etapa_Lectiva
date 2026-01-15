@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block contenido %}
+<head>
+    <style> 
+        .enlace1, .enlace5 {
+            display: inline-block;
+            color: beige;
+            text-decoration: none;
+            background-color: rgb(79, 101, 121);
+            padding: 0.5px;
+            margin: 25px 0px;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('{{ url_for('static', filename='images/admin.jpeg') }}'); 
+            background-size: cover;
+            position: relative;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .top-left {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div class="top-left">
+        <a class="enlace1" href="inicio" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            ⭠ INICIO    
+         </a>
+    
+         <a class="enlace5" href="MOD" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            ⭠ REGRESAR    
+         </a>
+    </div>
+    <div class="login-container">
+         <h1 style="color: rgb(10, 166, 194); text-align: center;">
+            INICIAR SESIÓN
+        </h1>
+         
+        <form id="registro_contratista" action="/login" method="post">
+            <label for="username">Usuario:</label>
+            <select id="username" name="username" required>
+                <option value="Contratista">Contratista</option>
+            </select>
+            <br><br>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+            <br><br>
+            <button type="submit">Entrar</button>
+        </form> 
+        <p style="text-align: center; margin-top: 20px;">Muchas gracias
+    </div>
+    <script>
+        document.getElementById('registro_contratista').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            window.location.href = 'orden_trabajo'; 
+        });
+    </script>
+</body>
+
+
+
+{% endblock contenido %}

@@ -1,0 +1,72 @@
+
+{% extends "layout.html" %}
+{% block contenido %}
+<head>
+   
+    <style>
+        body {background-color: rgb(16, 154, 179);} 
+    </style>
+
+    <style>
+        .enlace1{
+        display: inline-block;
+        color: beige;
+        text-decoration: none;
+        background-color: rgb(79, 101, 121);
+        padding: 0.5px;
+        margin: 25 px 0 px;
+        }
+        </style>
+
+        <style>
+            body { background-color: rgb(158, 205, 214); } 
+            .enlace6, .enlace8 
+            { display: inline-block; color: beige; text-decoration: none; padding: 15px; margin: 25px; } 
+            .enlace6 { background-color: rgb(25, 148, 185); } 
+            .enlace8 { background-color: rgb(187, 196, 63); } 
+            .container { display: flex; justify-content: space-between; align-items: center;}
+            </style>
+</head>
+
+<body style="background: url('{{ url_for('static', filename='images/no_autorizado.jpeg') }}'); background-size: cover;">
+
+
+    <a class="enlace1" href="inicio" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        ⭠ INICIO    
+     </a>
+         
+           
+         
+          
+    <h1 style= "color:rgb(185, 34, 59)" >          
+        <p align="center">¡LO SENTIMOS, NO TIENES AUTORIZACIÓN A ESTA SECCIÓN </p>
+    </h1>
+    <h1 style= "color:rgb(185, 34, 59)" >          
+        <p align="center">TE INVITAMOS A REGRESAR PARA GENERAR O CONSULTAR TU REPORTE! </p>
+    </h1>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <div 
+    class="container"> 
+    <a class="enlace6" href="/contratista" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> CONTRATISTA </a> 
+    <a class="enlace8" href="/moviles" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> MOVILES </a> 
+</div>
+    {% endblock contenido %}
+    
+   

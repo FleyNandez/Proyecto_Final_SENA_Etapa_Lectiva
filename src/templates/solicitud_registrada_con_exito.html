@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block contenido %}
+<head>
+
+    <style>
+        body {background-color: rgb(4, 131, 148);}
+    </style>
+
+    <style> 
+        .enlace1{
+        display: inline-block;
+        color: beige;
+        text-decoration: none;
+        background-color: rgb(79, 101, 121);
+        padding: 0.5px;
+        margin: 25 px 0 px;
+        }
+        
+
+        </style>
+
+<style>
+    .enlace9{
+    display: inline-block;
+    color: beige;
+    text-decoration: none;
+    background-color: rgb(79, 101, 121);
+    padding: 0.5px;
+    margin: 25 px 0 px;
+    }
+    
+    </style>
+
+    
+</head>
+
+<body style="background: url('{{ url_for('static', filename='images/registro_exitoso.jpeg') }}'); background-size: cover;">
+
+<a class="enlace1" href="inicio" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    ⭠ INICIO    
+ </a>
+
+<a class="enlace9" href="/generar_reporte" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    ⭠Nuevo Reporte    
+ </a>
+     
+
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     
+     
+     
+     
+     
+
+    <h1 style= "color:rgb(230, 226, 11)">
+        <p align="center">TU REGISTRO A SIDO EXITOSO
+            NUESTRO PERSONAL SE ENCARGARÁ DEL RESTO
+        </p>
+    </h1>
+    <br>
+    <br>
+
+    <h1 style= "color:rgb(230, 226, 11)">
+    <p align="center">Tu número de radicado es: <strong>{{ id }}</strong>
+    </p>
+    </h1>
+   
+{% endblock contenido %} 
